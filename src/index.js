@@ -9,6 +9,8 @@ require("dotenv").config()
 
 const app = express();
 
+app.use(express.json());
+
 app.use("/user",userRouter);
 app.use("/recipes",recipeRouter);
 app.use("/cooklist",cooklistRouter);
