@@ -2,7 +2,7 @@ const express = require('express');
 
 const userRouter = require('./routes/userRoutes');
 const recipeRouter = require('./routes/recipeRoutes');
-const cooklistRouter = require('./routes/cooklistRoutes');
+const userRecipeRouter = require('./routes/userRecipeRoutes');
 
 const mongoose =require('mongoose')
 require("dotenv").config()
@@ -18,7 +18,7 @@ app.use((req,res,next)=>{
 
 app.use("/user",userRouter);
 app.use("/recipes",recipeRouter);
-app.use("/cooklist",cooklistRouter);
+app.use("/my-recipe",userRecipeRouter);
 
 app.get('/',(req,res)=>{
     res.send('Hello, welcome to sign up')

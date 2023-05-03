@@ -18,3 +18,5 @@ const auth = (req,res,next)=>{
         res.status("401").json({message:"Unauthorized user!"});
     }
 }
+
+module.exports = auth;
