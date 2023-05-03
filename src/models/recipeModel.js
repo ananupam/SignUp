@@ -19,7 +19,7 @@ const recipeSchema = mongoose.Schema(
             required: true,
         },
         cookingtime: {
-            type: int,
+            type: Number,
             required: true,
         },
         category: {
