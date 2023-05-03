@@ -36,4 +36,4 @@ const recipeSchema = mongoose.Schema(
     }
 )
 
-const User = mongoose.model('User',userSchema);
+const Recipe = mongoose.model('Recipe',recipeSchema);
