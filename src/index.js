@@ -11,6 +11,11 @@ const app = express();
 
 app.use(express.json());
 
+app.use((req,res,next)=>{
+    console.log("HTTP method - " + req.method + " , URL- " + req.url);
+    next();
+})
+
 app.use("/user",userRouter);
 app.use("/recipes",recipeRouter);
 app.use("/cooklist",cooklistRouter);
