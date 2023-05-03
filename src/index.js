@@ -1,7 +1,11 @@
 const express = require('express');
+
 const userRouter = require('./routes/userRoutes');
 const recipeRouter = require('./routes/recipeRoutes');
 const cooklistRouter = require('./routes/cooklistRoutes');
+
+const mongoose =require('mongoose')
+require("dotenv").config()
 
 const app = express();
 
@@ -14,6 +18,14 @@ app.get('/',(req,res)=>{
 }) 
 
 
-app.listen(5004,()=>{
-    console.log("SignUp is running ")
-});
+mongoose
+ .connect(process.env.MONGO_URI)
+ .then(()=>{
+    //starting the server and specifying the port, making sure app created after connecting to db
+    app.listen(5004,()=> {
+        console.log('Signup  is running');
+    })
+    console.log('connected to mongoDB')
+ }).catch((error)=>{
+    console.log(error)
+ })
