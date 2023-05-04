@@ -56,4 +56,18 @@ const editRecipe = async(req,res)=>{
     }
 }
 
-module.exports = {getMyRecipe, addRecipe, editRecipe, getAllRecipe}
+const deleteRecipe = async(req,res)=>{
+    try{
+        const {id}=req.params;
+        const recipe = await UserRecipe.findByIdAndRemove(id);
+        if (!recipe){
+            return res.status(400).json({message:`cannot find any item with ID: ${id}`})
+        }
+        res.status(200).json(recipe);  
+    }catch(error){
+        console.group(error.message);
+        res.status(500).json({message: error.message});
+    }
+}
+
+module.exports = {getMyRecipe, addRecipe, editRecipe, getAllRecipe, deleteRecipe}
