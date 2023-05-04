@@ -44,7 +44,11 @@ const addRecipe = async(req,res)=>{
 
 const editRecipe = async(req,res)=>{
     try{
-        const recipe = await UserRecipe.create(req.body);
+        const {id} = req.params;
+        const recipe= await UserRecipe.findByIdAndUpdate(id, req.body, {new: true});
+        if (!recipe){
+            return res.status(404).json({mesage:`cannot find any item with ID: ${id}`})
+        } 
         res.status(200).json(recipe);  
     }catch(error){
         console.group(error.message);
