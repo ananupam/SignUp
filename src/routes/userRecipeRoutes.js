@@ -2,8 +2,12 @@ const express = require("express");
 const userRecipeRouter = express.Router();
 const {getAllRecipe, addRecipe} = require("../controllers/recipeController");
 
-userRecipeRouter.get("/",getAllRecipe)
+const auth = require('../middlewares/auth');
 
-userRecipeRouter.post("/",addRecipe)
+userRecipeRouter.get("/",auth,getAllRecipe)
+
+userRecipeRouter.post("/",auth,addRecipe)
+
+userRecipeRouter.put("/:id",auth,)
 
 module.exports = userRecipeRouter;

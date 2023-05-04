@@ -18,7 +18,7 @@ app.use((req,res,next)=>{
 
 app.use("/user",userRouter);
 app.use("/recipes",recipeRouter);
-app.use("/my-recipe",userRecipeRouter);
+app.use("/dashboard",userRecipeRouter);
 
 app.get('/',(req,res)=>{
     res.send('Hello, welcome to sign up')
